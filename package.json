@@ -1,0 +1,29 @@
+{
+  "name": "mini-video",
+  "version": "1.0.0",
+  "description": "A mini video wrapper with an event manager",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://hellopath@github.com/hellopath/mini-video.git"
+  },
+  "keywords": [
+    "video",
+    "player",
+    "simple",
+    "events",
+    "manager"
+  ],
+  "author": "hellopath <contact@pa-th.com> (http://pa-th.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellopath/mini-video/issues"
+  },
+  "homepage": "https://github.com/hellopath/mini-video#readme",
+  "dependencies": {
+    "dom-hand": "^1.0.0"
+  }
+}
