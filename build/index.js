@@ -4,12 +4,6 @@ Object.defineProperty(exports, '__esModule', {
 	value: true
 });
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _domHand = require('dom-hand');
-
-var _domHand2 = _interopRequireDefault(_domHand);
-
 exports['default'] = function (props) {
 
 	var scope;
@@ -82,7 +76,7 @@ exports['default'] = function (props) {
 
 	var addTo = function addTo(p) {
 		scope.parent = p;
-		_domHand2['default'].tree.add(scope.parent, video);
+		scope.parent.appendChild(video);
 	};
 
 	var on = function on(event, cb) {
@@ -122,7 +116,7 @@ exports['default'] = function (props) {
 		var source = document.createElement('source');
 		source.src = src;
 		source.type = type;
-		_domHand2['default'].tree.add(element, source);
+		element.appendChild(source);
 	};
 
 	video.addEventListener('canplay', onCanPlay);
@@ -157,4 +151,3 @@ exports['default'] = function (props) {
 };
 
 module.exports = exports['default'];
-

@@ -1,6 +1,6 @@
 {
   "name": "mini-video",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A mini video wrapper with an event manager",
   "main": "build/index.js",
   "scripts": {
@@ -23,7 +23,5 @@
     "url": "https://github.com/hellopath/mini-video/issues"
   },
   "homepage": "https://github.com/hellopath/mini-video#readme",
-  "dependencies": {
-    "dom-hand": "^1.0.0"
-  }
+  "dependencies": {}
 }

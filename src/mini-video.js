@@ -1,5 +1,3 @@
-import dom from 'dom-hand'
-
 export default (props)=> {
 
 	var scope;
@@ -74,7 +72,7 @@ export default (props)=> {
 
 	var addTo = (p)=> {
 		scope.parent = p
-		dom.tree.add(scope.parent, video)
+		scope.parent.appendChild(video)
 	}
 
 	var on = (event, cb)=> {
@@ -114,7 +112,7 @@ export default (props)=> {
 	    var source = document.createElement('source');
 	    source.src = src;
 	    source.type = type;
-	    dom.tree.add(element, source)
+	    element.appendChild(source)
 	}
 	
 	video.addEventListener('canplay', onCanPlay);
