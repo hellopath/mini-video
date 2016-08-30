@@ -10,7 +10,7 @@ export default (props)=> {
 	var onCanPlay = ()=>{
 		scope.isLoaded = true
 		if(props.autoplay) video.play()
-		if(props.volume != undefined) video.volume = props.volume
+		if(props.volume !== undefined) video.volume = props.volume
 		size.width = video.videoWidth
 		size.height = video.videoHeight
 		video.removeEventListener('canplay', onCanPlay);
@@ -19,11 +19,11 @@ export default (props)=> {
 	}
 
 	var play = (time)=>{
-		if(time != undefined) {
+		if(time !== undefined) {
 			scope.seek(time)
 		}
     	scope.isPlaying = true
-    	video.play()
+    	setTimeout(() => { video.play() }, 0)
     }
 
     var seek = (time)=> {
@@ -36,7 +36,7 @@ export default (props)=> {
 
     var pause = (time)=>{
     	video.pause()
-    	if(time != undefined) {
+    	if(time !== undefined) {
 			scope.seek(time)
 		}
     	scope.isPlaying = false
@@ -83,7 +83,7 @@ export default (props)=> {
 	var off = (event, cb)=> {
 		for (var i in eListeners) {
 			var e = eListeners[i]
-			if(e.event == event && e.cb == cb) {
+			if(e.event === event && e.cb === cb) {
 				eListeners.splice(i, 1)
 			}
 		}
@@ -109,9 +109,9 @@ export default (props)=> {
     }
 
     var addSourceToVideo = (element, src, type)=> {
-	    var source = document.createElement('source');
-	    source.src = src;
-	    source.type = type;
+	    var source = document.createElement('source')
+	    source.setAttribute('src', src)
+		source.setAttribute('type', type)
 	    element.appendChild(source)
 	}
 	

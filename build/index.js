@@ -16,7 +16,7 @@ exports['default'] = function (props) {
 	var onCanPlay = function onCanPlay() {
 		scope.isLoaded = true;
 		if (props.autoplay) video.play();
-		if (props.volume != undefined) video.volume = props.volume;
+		if (props.volume !== undefined) video.volume = props.volume;
 		size.width = video.videoWidth;
 		size.height = video.videoHeight;
 		video.removeEventListener('canplay', onCanPlay);
@@ -25,11 +25,13 @@ exports['default'] = function (props) {
 	};
 
 	var play = function play(time) {
-		if (time != undefined) {
+		if (time !== undefined) {
 			scope.seek(time);
 		}
 		scope.isPlaying = true;
-		video.play();
+		setTimeout(function () {
+			video.play();
+		}, 0);
 	};
 
 	var seek = function seek(time) {
@@ -40,7 +42,7 @@ exports['default'] = function (props) {
 
 	var pause = function pause(time) {
 		video.pause();
-		if (time != undefined) {
+		if (time !== undefined) {
 			scope.seek(time);
 		}
 		scope.isPlaying = false;
@@ -87,7 +89,7 @@ exports['default'] = function (props) {
 	var off = function off(event, cb) {
 		for (var i in eListeners) {
 			var e = eListeners[i];
-			if (e.event == event && e.cb == cb) {
+			if (e.event === event && e.cb === cb) {
 				eListeners.splice(i, 1);
 			}
 		}
@@ -114,8 +116,8 @@ exports['default'] = function (props) {
 
 	var addSourceToVideo = function addSourceToVideo(element, src, type) {
 		var source = document.createElement('source');
-		source.src = src;
-		source.type = type;
+		source.setAttribute('src', src);
+		source.setAttribute('type', type);
 		element.appendChild(source);
 	};
 
