@@ -105,6 +105,7 @@ export default (props) => {
     video.removeEventListener('canplaythrough', onCanPlay);
     video.removeEventListener('ended', ended);
     scope.clearAllEvents()
+    eListeners = []
     scope.isLoaded = false;
   }
 

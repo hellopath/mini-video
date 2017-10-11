@@ -1,12 +1,12 @@
 {
   "name": "mini-video",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A mini video wrapper with an event manager",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/watchify/bin/cmd.js -v -t babelify ./example/app.js -o ./example/bundle.js",
-    "build": "babel src -d build"
+    "build": "babel src -d build --presets=es2015"
   },
   "repository": {
     "type": "git",

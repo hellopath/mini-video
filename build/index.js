@@ -1,4 +1,10 @@
-export default (props => {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (props) {
 
   var scope;
   var video = document.createElement('video');
@@ -8,7 +14,7 @@ export default (props => {
   var size = { width: 0, height: 0 };
   var eListeners = [];
 
-  var onCanPlay = () => {
+  var onCanPlay = function onCanPlay() {
     scope.isLoaded = true;
     if (props.autoplay) video.play();
     if (props.volume !== undefined) video.volume = props.volume;
@@ -19,23 +25,23 @@ export default (props => {
     onReadyCallback(scope);
   };
 
-  var play = time => {
+  var play = function play(time) {
     if (time !== undefined) {
       scope.seek(time);
     }
     scope.isPlaying = true;
-    setTimeout(() => {
+    setTimeout(function () {
       video.play();
     }, 0);
   };
 
-  var seek = time => {
+  var seek = function seek(time) {
     try {
       video.currentTime = time;
     } catch (err) {}
   };
 
-  var pause = time => {
+  var pause = function pause(time) {
     video.pause();
     if (time !== undefined) {
       scope.seek(time);
@@ -43,7 +49,7 @@ export default (props => {
     scope.isPlaying = false;
   };
 
-  var volume = val => {
+  var volume = function volume(val) {
     if (val) {
       scope.el.volume = val;
     } else {
@@ -51,7 +57,7 @@ export default (props => {
     }
   };
 
-  var currentTime = val => {
+  var currentTime = function currentTime(val) {
     if (val) {
       scope.el.currentTime = val;
     } else {
@@ -59,29 +65,29 @@ export default (props => {
     }
   };
 
-  var width = () => {
+  var width = function width() {
     return scope.el.videoWidth;
   };
 
-  var height = () => {
+  var height = function height() {
     return scope.el.videoHeight;
   };
 
-  var ended = () => {
+  var ended = function ended() {
     if (props.loop) play();
   };
 
-  var addTo = p => {
+  var addTo = function addTo(p) {
     scope.parent = p;
     scope.parent.appendChild(video);
   };
 
-  var on = (event, cb) => {
+  var on = function on(event, cb) {
     eListeners.push({ event: event, cb: cb });
     video.addEventListener(event, cb);
   };
 
-  var off = (event, cb) => {
+  var off = function off(event, cb) {
     for (var i in eListeners) {
       var e = eListeners[i];
       if (e.event === event && e.cb === cb) {
@@ -91,7 +97,7 @@ export default (props => {
     video.removeEventListener(event, cb);
   };
 
-  var clearAllEvents = () => {
+  var clearAllEvents = function clearAllEvents() {
     for (var i in eListeners) {
       var e = eListeners[i];
       video.removeEventListener(e.event, e.cb);
@@ -100,27 +106,28 @@ export default (props => {
     eListeners = null;
   };
 
-  var reset = () => {
+  var reset = function reset() {
     video.removeEventListener('canplay', onCanPlay);
     video.removeEventListener('canplaythrough', onCanPlay);
     video.removeEventListener('ended', ended);
     scope.clearAllEvents();
+    eListeners = [];
     scope.isLoaded = false;
   };
 
-  var clear = () => {
+  var clear = function clear() {
     scope.reset();
     size = null;
     video = null;
   };
 
-  var addSourceToVideo = (src, type) => {
+  var addSourceToVideo = function addSourceToVideo(src, type) {
     source.setAttribute('src', src);
     source.setAttribute('type', type);
     video.appendChild(source);
   };
 
-  var changeVideoSource = (src, type) => {
+  var changeVideoSource = function changeVideoSource(src, type) {
     if (scope.isPlaying) video.pause();
     source.setAttribute('src', src);
     source.setAttribute('type', type);
@@ -128,7 +135,7 @@ export default (props => {
     scope.addEventsListeners();
   };
 
-  var addEventsListeners = () => {
+  var addEventsListeners = function addEventsListeners() {
     video.addEventListener('canplay', onCanPlay);
     video.addEventListener('canplaythrough', onCanPlay);
     video.addEventListener('ended', ended);
@@ -157,15 +164,15 @@ export default (props => {
     clearAllEvents: clearAllEvents,
     isPlaying: props.autoplay || false,
     isLoaded: false,
-    load: (src, callback) => {
+    load: function load(src, callback) {
       onReadyCallback = callback;
       addSourceToVideo(src, 'video/mp4');
     },
-    changeVideo: (src, callback) => {
+    changeVideo: function changeVideo(src, callback) {
       onReadyCallback = callback;
       changeVideoSource(src, 'video/mp4');
     }
   };
 
   return scope;
-});
+};
