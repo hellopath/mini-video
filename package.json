@@ -1,6 +1,6 @@
 {
   "name": "mini-video",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A mini video wrapper with an event manager",
   "main": "build/index.js",
   "scripts": {
