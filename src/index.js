@@ -24,7 +24,8 @@ export default (props) => {
       scope.seek(time)
     }
     scope.isPlaying = true
-    setTimeout(() => { video.play() }, 0)
+    video.pause() 
+    return video.play()
   }
 
   var seek = (time) => {

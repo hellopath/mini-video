@@ -30,9 +30,8 @@ exports.default = function (props) {
       scope.seek(time);
     }
     scope.isPlaying = true;
-    setTimeout(function () {
-      video.play();
-    }, 0);
+    video.pause();
+    return video.play();
   };
 
   var seek = function seek(time) {
